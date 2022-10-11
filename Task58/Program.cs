@@ -17,6 +17,7 @@ Console.WriteLine("Введите количество столбцов для �
 int secondcolumn = Convert.ToInt32(Console.ReadLine());
 int[,] secondmatrix = new int[secondrows, secondcolumn];
 int [,] result = new int [firstrows, secondcolumn];
+
 void MultiplicationMatrix(int[,] firstMartrix, int[,] secomdMartrix, int[,] result)
 {
   for (int i = 0; i < result.GetLength(0); i++)
@@ -24,9 +25,12 @@ void MultiplicationMatrix(int[,] firstMartrix, int[,] secomdMartrix, int[,] resu
     for (int j = 0; j < result.GetLength(1); j++)
     {
       int multi = 0;
-      for (int k = 0; k < firstMartrix.GetLength(1); k++)
+      for (int k = 0; k < result.GetLength(0); k++)
       {
-        multi += firstMartrix[i,k] * secomdMartrix[k,j];
+       for (int l = 0; l < result.GetLength(1); l++)
+       {
+         multi += firstMartrix[i,k] * secomdMartrix[l,j];
+       }
       }
       result[i,j] = multi;
     }
